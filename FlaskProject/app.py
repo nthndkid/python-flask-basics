@@ -12,6 +12,7 @@ import hashlib
 # TODO 1: initialize SQLite for this app with the db name of user.db
 # Follow the 'https://cs50.readthedocs.io/libraries/cs50/python/' docs and look for sqlite `SQL` method
 # db = SQL("sqlite:///___")
+db = SQL("sqlite:///user.db")
 
 app = Flask(__name__)
 # TODO 2: generate a strong secret key
@@ -19,7 +20,7 @@ app = Flask(__name__)
 # python -c 'import secrets; print(secrets.token_hex())'
 # Place the output as the value for app.secret_key
 # We need the secret key to make our server-side session secure
-app.secret_key = '___'
+app.secret_key = 'a6db69d39918a075534bf3850dabbd7d10514bbd7a5b8e93bc9a196fa91a6fd9'
 
 @app.route('/')
 def home():
@@ -44,7 +45,7 @@ def login():
         
         try:
             # TODO 3: use db.execute to get the user record referencing user's email, name this variable as user
-            # user = db.execute("SELECT * FROM ____ WHERE ___=?", ____)
+            user = db.execute("SELECT * FROM user WHERE email=?", email)
             
             if len(user) != 1:
                 return 'Invalid email', 400
@@ -78,7 +79,7 @@ def signup():
         
         try:
             # TODO 4: use db.execute to get the user record referencing user's email, name this variable as user
-            # user = db.execute('SELECT * FROM ___ WHERE ____=? ', __)
+            user = db.execute('SELECT * FROM user WHERE email=? ', email)
             
             if user:
                 return 'Email already exists', 400
@@ -87,7 +88,7 @@ def signup():
             hash = bcrypt.hashpw(base64.b64encode(hashlib.sha256(password.encode('utf-8')).digest()), bcrypt.gensalt())
 
             # TODO 5: insert the email and hash to the database
-            # db.execute('INSERT INTO __(__, ___, __) VALUES(?, ?, ?)', ___, __, ___)
+            db.execute('INSERT INTO user(email, password, username) VALUES(?, ?, ?)', email, hash, username)
 
             # add user to session
             session['user'] = {'email': email, 'username': username}
