@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block nav_options %}
+<div class="relative">
+  <div class="flex gap-2 cursor-pointer" onclick="toggler()">
+    <img src="{{ url_for('static', filename='user-icon.svg') }}" alt="settings" class="w-5">
+    <p>settings</p>
+  </div>
+  <div class="absolute flex flex-col gap-1 mt-4 bg-neutral-100 p-4 rounded hidden" id="toggle">
+    <a href="{{ url_for('settings') }}" class="cursor-pointer hover:font-bold">Edit info</a>
+    <form action="{{ url_for('logout') }}" method="POST" class="hover:font-bold">
+      <button class="cursor-pointer">
+          Logout
+      </button>
+    </form>
+  </div>  
+</div>
+
+{% endblock %}
+{% block content %}
+<div class="mb-3 flex flex-col gap-2">
+    <p><span class="font-bold">email:</span> {{ session['user']['email'] }}</p>
+    <p><span class="font-bold"> username: </span>{{ session['user']['username'] }}</p>
+    <form action="{{ url_for('delete_account') }}" method="POST">
+        <button class="bg-red-500 text-white rounded py-1 px-2 cursor-pointer">Delete account</button>
+    </form>
+</div>
+<div class="flex justify-center flex-col items-center gap-4">
+    <form action="{{ url_for('update_username') }}" method="POST" class="bg-orange-300 p-5 rounded">
+        <legend class="font-bold">Change username</legend>
+        <div class="flex flex-col mb-3">
+            <label for="username">username</label>
+            <input type="text" name="username" id="username" class="border rounded px-2" placeholder="username" required>
+        </div>
+        <div class="flex justify-end">
+            <button class="bg-neutral-200 px-2 py-1 rounded cursor-pointer">Change</button>
+        </div>
+    </form>
+    <form action="{{ url_for('update_password') }}" method="POST" class="bg-orange-300 p-5 rounded">
+        <legend class="font-bold">Change password</legend>
+        <div class="flex flex-col mb-3">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password" class="border rounded px-2" placeholder="password" required minlength="6">
+        </div>
+        <div class="flex justify-end">
+            <button class="bg-neutral-200 px-2 py-1 rounded cursor-pointer">Change</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let isActive = false;
+  const toggler = () => {
+    isActive = !isActive
+    console.log(isActive)
+    if (isActive) {
+      document.querySelector('#toggle').classList.remove('hidden');
+    } else {
+      document.querySelector('#toggle').classList.add('hidden');
+    }
+  }
+</script>
+{% endblock %}

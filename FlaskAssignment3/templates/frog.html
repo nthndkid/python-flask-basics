@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Frog Count:</h1>
+<!-- 
+    Since we passed in the frogCount as a parameter in 
+    render_template, we can use the python variable inside
+    jinja.
+-->
+<h3 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">{{ frogCount }}</h3>
+{% endblock %}

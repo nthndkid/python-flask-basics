@@ -1,0 +1,20 @@
+<!--    
+    This extends block means we will use the preexisting code
+    as a template. In this case, the base.html would be our template.
+-->
+{% extends 'base.html' %}
+
+<!-- 
+    The block content is a way to inject the html code from index.html to 
+    the template, base.html. Open base.html to learn more.
+-->
+{% block content %}
+<h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Assignment 3 is open</h1>
+<div style="display: flex; justify-content: center;">
+    <img src="https://i.pinimg.com/originals/a5/7a/c2/a57ac2e15091f2ee6e13f8f13a603a61.gif" alt="gwenchana">
+</div>
+<!-- 
+    if you want to stop injecting code from a block because you 
+    want to use another block, use the endblock.
+-->
+{% endblock %}

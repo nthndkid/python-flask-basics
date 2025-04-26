@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>TO DO List kasi limot ako</h1>
+<!-- 
+    Use url_for and the name of the funtion for the 
+    /todo endpoint. add method POST
+-->
+<form action="{{ url_for('todo') }}" method="POST">
+    <!-- 
+        Remember that the value of the name is task.
+        This is the key of the dict to get the value
+        and append it to tasks.
+    -->
+    <input type="text" name="task">
+    <input type="submit">
+</form>
+<ul>
+    <!-- 
+        Use for loop jinja syntax to iterate over the `tasks`.
+        Challenge 2: I deleted the code here because
+        I'm so forgetful. Please provide the valid code
+        that would render all previous tasks provided by the
+        client.
+    -->
+</ul>
+{% endblock %}

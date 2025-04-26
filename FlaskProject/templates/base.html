@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopi</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <header>
+        <nav class="flex justify-between px-2 py-4 items-center">
+            <a href="{{ url_for('home') }}"><h2 class="font-bold text-xl">Shopi</h2></a>
+            {% block nav_options %}
+            {% endblock %}
+        </nav>
+    </header>
+    <main class="min-h-[calc(100dvh-64px)] container mx-auto py-5">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="grid sm:grid-cols-[2fr_3fr] bg-orange-400 p-4 text-white">
+        <h2 class="text-center self-center font-bold text-xl mb-5 sm:mb-0">Shopi</h2>
+        <div class="grid grid-cols-3">
+            <div class="flex flex-col">
+                <h4 class="font-bold">Customer Service</h4>
+                <a>Help Center</a>
+                <a>Payment Methods</a>
+                <a>Order Tracking</a>
+                <a>Return & Refund</a>
+                <a>Contact Us</a>
+            </div>
+            <div class="flex flex-col">
+                <h4 class="font-bold">About Shopi</h4>
+                <a>About Us</a>
+                <a>Blog</a>
+                <a>Career</a>
+                <a>Privacy Policy</a>
+                <a>Media Contact</a>
+            </div>
+            <div class="flex flex-col">
+                <h4 class="font-bold">Follow Us</h4>
+                <a>Facebook</a>
+                <a>Instagram</a>
+                <a>Twitter</a>
+                <a>LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- 
+    This is a simple HTML document template for index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Assignment 3</title>
+</head>
+<body>
+    <!-- 
+        This block has a identifier called 'content'.
+        This means when we `extends 'base.html'` in the index.html, 
+        we can use `block content` inside index.html. And, all the code wrapped 
+        in between the block and endblock in the 
+        index.html would be injected back to the base.html
+    -->
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
+
+<!-- 
+    https://flask.palletsprojects.com/en/stable/tutorial/templates/
+-->

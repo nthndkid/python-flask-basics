@@ -1,0 +1,22 @@
+{% extends 'form.html' %}
+{% block nav_options %}
+<div class="flex gap-4 items-center">
+    <a href="{{url_for('login')}}">
+        <button class="bg-orange-300 px-4 py-1 rounded hover:bg-orange-400 cursor-pointer hover:text-white">
+            Login
+        </button>
+    </a>
+    <button class="px-4 py-1 rounded border border-orange-400 hover:bg-orange-400 cursor-pointer hover:text-white">
+        Signup
+    </button>
+</div>
+{% endblock %}
+{% block form_action %}{{ url_for('signup') }}{% endblock %}
+{% block form_legend %}Signup{% endblock %}
+{% block form_additional_param %}
+<div class="flex flex-col mb-3">
+    <label for="username">username</label>
+    <input type="text" name="username" id="username" class="border rounded px-2" placeholder="username" required>
+</div>
+{% endblock %}
+{% block form_button %}signup{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex; justify-content: center;">
+
+    <!-- 
+        Notice the use of url_for(), we must place the static files like images,
+        javascripts, and other things inside the `/static` folder 
+    -->
+    <img src='{{ url_for("static", filename="/fishbook.jpg") }}' alt="fishbook" style="max-width: 100%;">
+</div>
+
+<div style="display: flex; justify-content: center; font-family: Arial, Helvetica, sans-serif;">
+    <div>
+        <!-- 
+            Here, I rendered the email and password from cred.
+        -->
+        <h3>Your email is: {{ cred['email'] }}</h3>
+        <h3>Your password is: {{ cred['password'] }}</h3>
+        <h1 style="text-align: center;">😎</h1>
+    </div>
+</div>
+
+<!-- 
+    Use the best practice of using url_for to generate links.
+    Here the kunwariLogin is the fuction name of the login
+    form.
+-->
+<p>Let's try it againnnn <a href="{{ url_for('kunwariLogin') }}">login form</a>.</p>
+{% endblock %}

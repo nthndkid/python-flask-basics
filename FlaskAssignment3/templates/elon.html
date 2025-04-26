@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- 
+    Since we passed in the frogCount as a parameter in 
+    render_template, we can use the python variable inside
+    jinja. And we will be using conditionals
+-->
+
+<h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">
+    {% if romanSalute == 1 %}
+    <img src="https://tiermaker.com/images/chart/chart/all-the-levels-of-the-meme-uncanny-mr-incredible-69584/2022-01-0221h4337png.png" alt="bad">
+    {% elif romanSalute == 2 %}
+    <img src="https://i1.sndcdn.com/artworks-JeZQh6Hbil2Er51B-U9rx3A-t1080x1080.jpg" alt="happy">
+    {% else %}
+    <p>I have no idea what that was.</p>
+    {% endif %}
+</h1>
+
+{% endblock %}

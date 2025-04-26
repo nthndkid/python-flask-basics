@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Wishlist:</h1>
+<!-- 
+    Since we passed in the frogCount as a parameter in 
+    render_template, we can use the python variable inside
+    jinja.
+-->
+<ul style="text-align: center; font-family: Arial, Helvetica, sans-serif;">
+    {% for wish in hilingKo %}
+        <li>{{ wish }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

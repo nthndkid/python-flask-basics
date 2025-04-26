@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block nav_options %}
+<div class="relative">
+  <div class="flex gap-2 cursor-pointer" onclick="toggler()">
+    <img src="{{ url_for('static', filename='user-icon.svg') }}" alt="settings" class="w-5">
+    <p>settings</p>
+  </div>
+  <div class="absolute flex flex-col gap-1 mt-4 bg-neutral-100 p-4 rounded hidden" id="toggle">
+    <a href="{{ url_for('settings') }}" class="cursor-pointer hover:font-bold">Edit info</a>
+    <form action="{{ url_for('logout') }}" method="POST" class="hover:font-bold">
+      <button class="cursor-pointer">
+          Logout
+      </button>
+    </form>
+  </div>  
+</div>
+
+{% endblock %}
+{% block content %}
+<h1 class="mb-2">Happy shopping, <span class="font-bold">{{ session['user']['username'] }}!</span></h1>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    {% for item in fake_store %}
+    <div id="{{ item['id'] }}" class="bg-neutral-200 p-4 grid grid-rows-[1fr_auto] rounded">
+        <div>
+            <img src="{{ item['image'] }}" alt="{{ item['title'] }}">
+            <p>{{ item['title'] }}</p>
+            <p>rating: {{ item['rating']['rate'] }}</p>
+            <p>₱{{ item['price'] }}</p>
+        </div>
+        
+        <div class="flex justify-end">
+            <button class="bg-orange-400 rounded px-2 py-1 cursor-pointer hover:bg-orange-500">Buy now!</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let isActive = false;
+  const toggler = () => {
+    isActive = !isActive
+    console.log(isActive)
+    if (isActive) {
+      document.querySelector('#toggle').classList.remove('hidden');
+    } else {
+      document.querySelector('#toggle').classList.add('hidden');
+    }
+  }
+</script>
+{% endblock %}
