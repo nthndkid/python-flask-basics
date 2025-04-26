@@ -116,7 +116,7 @@ def update_username():
         return 'Failed change name', 400
     
     # TODO 6: update the username
-    # db.execute('UPDATE ___ SET _____=? WHERE _____=?', ______, session['user']['email'])
+    db.execute('UPDATE user SET username=? WHERE email=?', username, session['user']['email'])
     session['user']['username'] = username
     session.modified = True
 
@@ -135,7 +135,7 @@ def update_password():
     
     hash = bcrypt.hashpw(base64.b64encode(hashlib.sha256(password.encode('utf-8')).digest()), bcrypt.gensalt())
     # TODO 7: update the password
-    # db.execute('UPDATE ___ SET _____=? WHERE _____=?', _____, session['user']['email'])
+    db.execute('UPDATE user SET password=? WHERE email=?', hash, session['user']['email'])
 
     return redirect(url_for('settings'))
 
@@ -146,7 +146,7 @@ def delete_account():
         return redirect(url_for('login'))
     
     # TODO 8: update the username
-    # db.execute('DELETE FROM _____ WHERE ____=?', session['user']['email'])
+    db.execute('DELETE FROM user WHERE email=?', session['user']['email'])
     session.pop('user', None)
     return redirect(url_for('login'))
 
