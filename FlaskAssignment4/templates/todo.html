@@ -15,6 +15,9 @@
     <input type="submit">
 </form>
 <ul>
+    {% for task in tasks %}
+        <li>{{ task }}</li>
+    {% endfor %}
     <!-- 
         Use for loop jinja syntax to iterate over the `tasks`.
         Challenge 2: I deleted the code here because

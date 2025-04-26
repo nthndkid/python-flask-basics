@@ -40,13 +40,16 @@ def kunwariLogin():
 # the key is `task`) in tasks
 # render the html
 # visit todo.html to see the html code
-# tasks = []
-# @app.route('/todo', methods=['GET', 'POST'])
-# def todo():
-#     if request.method == "POST":
-#         ...
+tasks = []
+@app.route('/todo', methods=['GET', 'POST'])
+def todo():
+    if request.method == "POST":
+        task = request.form.get('task')
+        print(task)
+        
+    tasks.append(task)
 
-#     return render_template("todo.html", tasks=tasks)
+    return render_template("todo.html", tasks=tasks)
 
    
 
